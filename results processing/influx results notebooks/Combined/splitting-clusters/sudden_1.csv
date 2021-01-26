@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+splitting-clusters_sudden_1,improved_UOB,285717299.2
+splitting-clusters_sudden_1,ESOS_ELM,5133915282.285714
+splitting-clusters_sudden_1,WEOB1,569999360.0
+splitting-clusters_sudden_1,improved_OOB,419844505.6
+splitting-clusters_sudden_1,UOB,309383168.0
+splitting-clusters_sudden_1,OOB,580974182.4
+splitting-clusters_sudden_1,WEOB2,334302412.8
+splitting-clusters_sudden_1,RebalanceStream,2648337203.2
+splitting-clusters_sudden_1,CSMOTE,1330518425.6

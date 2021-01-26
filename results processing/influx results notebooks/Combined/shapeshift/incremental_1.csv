@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+shapeshift_incremental_1,improved_UOB,258574336.0
+shapeshift_incremental_1,ESOS_ELM,5257894229.333333
+shapeshift_incremental_1,WEOB1,485530158.54545456
+shapeshift_incremental_1,improved_OOB,528849454.54545456
+shapeshift_incremental_1,WEOB2,344547737.6
+shapeshift_incremental_1,CSMOTE,1307477196.8
+shapeshift_incremental_1,RebalanceStream,2536476262.4
+shapeshift_incremental_1,OOB,524923289.6
+shapeshift_incremental_1,UOB,336527360.0

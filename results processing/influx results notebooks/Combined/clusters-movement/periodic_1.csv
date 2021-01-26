@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+clusters-movement_periodic_1,improved_UOB,276650666.6666667
+clusters-movement_periodic_1,ESOS_ELM,5159487780.571428
+clusters-movement_periodic_1,WEOB1,503410005.3333333
+clusters-movement_periodic_1,improved_OOB,563970048.0
+clusters-movement_periodic_1,UOB,295138918.4
+clusters-movement_periodic_1,OOB,565228748.8
+clusters-movement_periodic_1,WEOB2,349906534.4
+clusters-movement_periodic_1,RebalanceStream,2837787033.6
+clusters-movement_periodic_1,CSMOTE,1211031961.6

@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+clusters-movement_sudden_4,improved_UOB,343996974.54545456
+clusters-movement_sudden_4,ESOS_ELM,4630865042.285714
+clusters-movement_sudden_4,WEOB1,471970909.09090906
+clusters-movement_sudden_4,improved_OOB,550063718.4
+clusters-movement_sudden_4,UOB,394493952.0
+clusters-movement_sudden_4,OOB,535118233.6
+clusters-movement_sudden_4,WEOB2,343603200.0
+clusters-movement_sudden_4,RebalanceStream,2550612377.6
+clusters-movement_sudden_4,CSMOTE,943232614.4

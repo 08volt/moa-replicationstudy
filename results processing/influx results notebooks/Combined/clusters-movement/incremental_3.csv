@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+clusters-movement_incremental_3,improved_UOB,351894732.8
+clusters-movement_incremental_3,ESOS_ELM,4690120411.428572
+clusters-movement_incremental_3,WEOB1,418194353.2307692
+clusters-movement_incremental_3,improved_OOB,404784679.38461536
+clusters-movement_incremental_3,UOB,385520025.6
+clusters-movement_incremental_3,OOB,508388966.4
+clusters-movement_incremental_3,WEOB2,363391795.2
+clusters-movement_incremental_3,RebalanceStream,2837524889.6
+clusters-movement_incremental_3,CSMOTE,938072064.0

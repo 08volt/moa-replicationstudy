@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+  influxdb:
+    image: quay.io/influxdb/influxdb:2.0.0-alpha
+    hostname: influxdb
+    container_name: influxdb
+    ports:
+      - "9999:9999"
+
+  influxdb-sidecar-setup:
+    image: emanuelefalzone/influxdb-sidecar-setup:1.0.0
+    hostname: influxdb-sidecar-setup
+    container_name: influxdb-sidecar-setup
+    environment:
+      INFLUX_HOSTNAME: influxdb
+      INFLUX_USERNAME: admin
+      INFLUX_PASSWORD: password
+      INFLUX_TOKEN: "d2VsY29tZQ=="
+      INFLUX_ORGANIZATION: polimi
+      INFLUX_BUCKET: edv
+      INFLUX_RETENTION_PERIOD: 0
+
+  telegraf:
+    image: emanuelefalzone/telegraf:3fc2cec8
+    hostname: telegraf
+    container_name: telegraf
+    volumes:
+      - ./telegraf:/etc/telegraf
+      - /var/run/docker.sock:/var/run/docker.sock

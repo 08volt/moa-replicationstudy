@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+appearing-minority_sudden_2,improved_UOB,265472000.0
+appearing-minority_sudden_2,ESOS_ELM,5442477056.0
+appearing-minority_sudden_2,WEOB1,510310586.1818182
+appearing-minority_sudden_2,improved_OOB,320725736.72727275
+appearing-minority_sudden_2,UOB,292424908.8
+appearing-minority_sudden_2,OOB,457193472.0
+appearing-minority_sudden_2,WEOB2,302948352.0
+appearing-minority_sudden_2,RebalanceStream,4312973312.0
+appearing-minority_sudden_2,CSMOTE,1830988595.2

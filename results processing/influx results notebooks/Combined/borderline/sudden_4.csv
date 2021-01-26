@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+borderline_sudden_4,improved_UOB,373052881.45454544
+borderline_sudden_4,ESOS_ELM,3748730722.4615383
+borderline_sudden_4,WEOB1,432324980.3636364
+borderline_sudden_4,improved_OOB,609806745.6
+borderline_sudden_4,WEOB2,376096768.0
+borderline_sudden_4,RebalanceStream,2493436723.2
+borderline_sudden_4,OOB,506166067.2
+borderline_sudden_4,UOB,481570406.4
+borderline_sudden_4,CSMOTE,869512806.4

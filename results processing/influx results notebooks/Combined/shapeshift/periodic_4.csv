@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+shapeshift_periodic_4,improved_UOB,343410688.0
+shapeshift_periodic_4,ESOS_ELM,7026784665.6
+shapeshift_periodic_4,WEOB1,565543731.2
+shapeshift_periodic_4,improved_OOB,442615125.3333333
+shapeshift_periodic_4,WEOB2,382370611.2
+shapeshift_periodic_4,CSMOTE,997303091.2
+shapeshift_periodic_4,RebalanceStream,2846076928.0
+shapeshift_periodic_4,OOB,336942694.4
+shapeshift_periodic_4,UOB,447662080.0

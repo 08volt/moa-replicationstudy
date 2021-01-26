@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+jitter_periodic_1,improved_UOB,275329706.6666667
+jitter_periodic_1,ESOS_ELM,5891377338.181818
+jitter_periodic_1,WEOB1,470611037.09090906
+jitter_periodic_1,improved_OOB,444289768.72727275
+jitter_periodic_1,UOB,305916586.6666667
+jitter_periodic_1,OOB,546993356.8
+jitter_periodic_1,WEOB2,342617702.4
+jitter_periodic_1,RebalanceStream,2277977292.8
+jitter_periodic_1,CSMOTE,1245123677.090909

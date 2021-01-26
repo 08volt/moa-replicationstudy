@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+appearing-clusters_sudden_4,improved_UOB,284980460.3076923
+appearing-clusters_sudden_4,ESOS_ELM,6443874117.818182
+appearing-clusters_sudden_4,WEOB1,557514379.6363636
+appearing-clusters_sudden_4,improved_OOB,504164724.3636364
+appearing-clusters_sudden_4,UOB,508594176.0
+appearing-clusters_sudden_4,OOB,503518822.4
+appearing-clusters_sudden_4,WEOB2,361695232.0
+appearing-clusters_sudden_4,RebalanceStream,2699436441.6
+appearing-clusters_sudden_4,CSMOTE,936641331.2

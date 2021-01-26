@@ -1,0 +1,9 @@
+ds,alg,avg_mem
+x_y_sineG_3_7,ESOS_ELM,5887538269.090909
+x_y_sineG_3_7,improved_UOB,356168499.2
+x_y_sineG_3_7,WEOB1,622905753.6
+x_y_sineG_3_7,improved_OOB,471384473.6
+x_y_sineG_3_7,UOB,353266073.6
+x_y_sineG_3_7,WEOB2,294986956.8
+x_y_sineG_3_7,OOB,513471283.2
+x_y_sineG_3_7,RebalanceStream,2702723891.2

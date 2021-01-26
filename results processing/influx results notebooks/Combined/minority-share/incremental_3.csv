@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+minority-share_incremental_3,improved_UOB,387021619.2
+minority-share_incremental_3,ESOS_ELM,4921074688.0
+minority-share_incremental_3,WEOB1,442983082.6666667
+minority-share_incremental_3,improved_OOB,406095530.6666667
+minority-share_incremental_3,WEOB2,328014233.6
+minority-share_incremental_3,UOB,370035916.8
+minority-share_incremental_3,CSMOTE,835420979.2
+minority-share_incremental_3,RebalanceStream,1639707443.2
+minority-share_incremental_3,OOB,552101478.4

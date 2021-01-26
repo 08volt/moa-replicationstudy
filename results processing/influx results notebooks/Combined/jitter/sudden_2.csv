@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+jitter_sudden_2,improved_UOB,259348293.8181818
+jitter_sudden_2,ESOS_ELM,5545022070.153846
+jitter_sudden_2,WEOB1,474263552.0
+jitter_sudden_2,improved_OOB,327940437.3333333
+jitter_sudden_2,UOB,319394611.2
+jitter_sudden_2,OOB,448901529.6
+jitter_sudden_2,WEOB2,314452154.1818182
+jitter_sudden_2,RebalanceStream,2116368942.5454545
+jitter_sudden_2,CSMOTE,1030250496.0

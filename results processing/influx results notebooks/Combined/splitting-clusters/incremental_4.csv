@@ -1,0 +1,10 @@
+ds,alg,avg_mem
+splitting-clusters_incremental_4,improved_UOB,408616960.0
+splitting-clusters_incremental_4,ESOS_ELM,5952736256.0
+splitting-clusters_incremental_4,WEOB1,591248588.8
+splitting-clusters_incremental_4,improved_OOB,419209960.72727275
+splitting-clusters_incremental_4,UOB,405200486.4
+splitting-clusters_incremental_4,OOB,399996928.0
+splitting-clusters_incremental_4,WEOB2,390400819.2
+splitting-clusters_incremental_4,RebalanceStream,2666338304.0
+splitting-clusters_incremental_4,CSMOTE,1045827584.0
