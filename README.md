@@ -4,10 +4,6 @@
 ![](https://camo.githubusercontent.com/1ef7c1925e77c6f8b1c9f5adfdcea37dba30c98478264503067a91076db66144/687474703a2f2f6d6f612e636d732e7761696b61746f2e61632e6e7a2f77702d636f6e74656e742f75706c6f6164732f323031342f31312f4c6f676f4d4f412e6a7067)
 
 
-**Table of Contents**
-
-[TOC]
-
 # Introduction
 
 Data Stream analysis is a rising field of Machine Learning where the data to be analyzed are coming from an infinite flow.
