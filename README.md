@@ -44,7 +44,7 @@ F1 score:
 
 Recall:
 
-![](results/plots/Recall_%_4x3.png)
+![](results/plots/Recall_3x4_ALL.png)
 
 Time and Memory:
 
