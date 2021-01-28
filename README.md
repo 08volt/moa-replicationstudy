@@ -6,7 +6,7 @@
 
 **Table of Contents**
 
-[TOCM]
+[TOC]
 
 # Introduction
 
@@ -40,7 +40,7 @@ I run 10 experiments for each Algorithm on each Dataset using an AWS virtual mac
 
 F1 score:
 
-![](results/plots/F1_%_4x3.png)
+![](results/plots/F1_4x3.png)
 
 Recall:
 
