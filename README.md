@@ -34,7 +34,7 @@ Here I uploaded only the corresponding java classes, for the complete moa fork r
 
 # Experiments
 I run 10 experiments for each Algorithm on each Dataset using an AWS virtual machine.
-[Here] you can find the code to build the bash to run the experiments and the code to build the query to extract the results from influx.
+[Here](tests with docker/) you can find the code to build the bash to run the experiments and the code to build the query to extract the results from influx.
 
 # Results
 
