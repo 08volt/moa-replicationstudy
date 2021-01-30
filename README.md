@@ -34,10 +34,10 @@ In this version of Online Bagging lambda is determined by the size ratio between
 
 ### Weighted Ensambles
 
-The same paper that proposed the improved version also proposed two ensamble strategies to combine the strength of OOB and UOB.
-This algorithms need a new parameter, the Smoothed Recall. It is a moving avarage of the recall to smooth out it's short-term fluctuations.
-The G-mean of the OOB and UOB are computed using the Smoothed Recall and are used to compute their wieghts for the final prediction.
-WEOB1 use the normalized G-mean values of OOB and UOB as their weights, WEOB2 instead compares the G-means and use only the prediction of the model with the higher one.
+The same paper which proposed the improved versions also presented two ensamble strategies to combine the strength of OOB and UOB.
+This ensambles need a new parameter, called Smoothed Recall. It is a moving avarage of the recall of each class to smooth out it's short-term fluctuations.
+In order to weight the predictions of the OOB and UOB their G-mean values are computed using their Smoothed Recalls.
+WEOB1 use the normalized G-mean values of OOB and UOB as their weights to compute a weighted sum of their predictions, WEOB2 instead compares the G-mean values and use only the prediction of the model with the higher one.
 
 ## CSMOTE
 
