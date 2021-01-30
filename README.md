@@ -13,6 +13,38 @@ The difficulty on analyzind Data streams doesn't stop here. They usually have a 
 
 # State of Art
 
+The algorithms I have tested are Online Bagging techniques, CSMOTE, Rebalance Stream and Ensamble of Online sequential extreme learning machine. 
+
+## Online Bagging
+
+The idea of this class of algorithms is to make an ensamble of base learners where for each one of them the classes are balanced, choosing how many times the learners will train with the new sample based its class. This methods continuosly learn the class imbalance status in data streams and the sampling parameters for the learners adaptively.
+
+### OOB and UOB
+The class balancing can be done in two ways: Undesampling the majority class examples or Oversampling the minority class examples. 
+In the original Oversampling Online Bagging and Undersampling Online Bagging there is a parameter "w(k)" for each class that denote the size percentage of class k and a parameter "R(k)" that denotes the accuracy of the model on class k and it can help the online learner to decide which class needs more attention.
+
+OOB will update each learner 1 time if the sample is from a majority class, otherwise the number of updates will be choose from a Poisson distribution with lambda 1/w(k).
+
+UOB will update each learner 1 time if the sample is from a minority class, otherwise the number of updates will be choose from a Poisson distribution with lambda 1 - w(k)  
+
+### Improved OOB and UOB
+
+This algorithms come from a more recente study of OOB and UOB claming that the strategy of setting lambda is not consistent with the imbalance degree, and varies with the number of classes.
+In this version of Online Bagging lambda is determined by the size ratio between classes. Considering the positive class + the minority and the megative class - the majority, improved OOB will set lambda(+) = w(-)/w(+) and lambda(-) = 1, improved UOB instead will set lambda(+) = 1 and lambda(-) = w(+)/w(-)
+
+### Weighted Ensambles
+
+The same paper that proposed the improved version also proposed two ensamble strategies to combine the strength of OOB and UOB.
+This algorithms need a new parameter, the Smoothed Recall. It is a moving avarage of the recall to smooth out it's short-term fluctuations.
+The G-mean of the OOB and UOB are computed using the Smoothed Recall and are used to compute their wieghts for the final prediction.
+WEOB1 use the normalized G-mean values of OOB and UOB as their weights, WEOB2 instead compares the G-means and use only the prediction of the model with the higher one.
+
+## CSMOTE
+
+## RebalanceStream
+
+## ESOS-ELM
+
 I collected all the paper that i am referring to [here](papers/) 
 
 
@@ -24,6 +56,7 @@ I also analyzed 3 real dataset you can find [here](datasets/Real).
 
 
 # Algorithms implementation
+
 
 I implemented the algorithms in moa [here](algorithms code).
 Here I uploaded only the corresponding java classes, for the complete moa fork refer to this [moa fork](https://github.com/08volt/moa "moa fork")).
