@@ -69,6 +69,25 @@ I collected all the paper that i am referring to [here](papers/)
 
 # Dataset generation
 
+I generated 9 different types of drift forking this [generator](https://github.com/dabrze/imbalanced-stream-generator) and building a script to aumatically generate the data streams files. 
+Datastreams specifics:
+* 100 thousands examples each
+* 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
+* 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
+* 9 drifs: 
+  Drift Name | Before | After
+------------ | -------------
+appearing-minority | Content before | content after
+disappearing-minority | Content before | content after
+minority-share | Content before | content after
+jitter | Content before | content after
+clusters-movement | Content before | content after
+appearing-clusters | Content before | content after
+splitting-clusters | Content before | content after
+borderline | Content before | content after
+shapeshift | Content before | content after
+
+
 I analyzed 3 types of drift with 4 imbalance rates for each Sea and Sine [datasets](datasets/SeaSine).
 I generated 9 type with this data [genarator](datasets/Generator) each with 4 imbalance rates.
 I also analyzed 3 real dataset you can find [here](datasets/Real). 
