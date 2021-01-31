@@ -76,7 +76,7 @@ Datastreams specifics:
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
 * 9 drifs
 
-![](datasets/Genrator/drifts_gifs/appearing-clustersincremental.gif)
+![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)
 
 Drift Name | Before | After
 ------------ | ------------- | ------------- | -------------
