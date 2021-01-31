@@ -77,17 +77,17 @@ Datastreams specifics:
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
 * 9 drifts
 
-----------------------------------------------------------------------------------------------------------
-
-appearing-minority | ![](datasets/Generator/drifts_gifs/appearing-minorityincremental.gif)
-disappearing-minority | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif)
-minority-share | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)
-jitter | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)
-clusters-movement | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)
-appearing-clusters | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)
-splitting-clusters | ![](datasets/Generator/drifts_gifs/splitting-clustersincremental.gif)
-borderline | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)
-shapeshift | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)
+| Attempt                          | #1                                                                       |
+| :------------------------------: | :----------------------------------------------------------------------: |
+| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minoritysudden.gif)    |
+| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
+| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)        |
+| jitter                           | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)                |
+| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
+| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
+| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clustersincremental.gif)    |
+| borderline                       | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)            |
+| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
 
 
 I analyzed 3 types of drift with 4 imbalance rates for each Sea and Sine [datasets](datasets/SeaSine).
