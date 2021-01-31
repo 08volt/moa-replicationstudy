@@ -54,6 +54,10 @@ When new samples arrives, they are added to a batch and one base learner is trai
 
 When ADWIN detects a warning for a concept drift, the algorithm start collecting samples in a new batch called resetBatch. When the ADWIN detect the change 3 new learners are trained, one only with the resetBatch, one with the resetBatch balanced with SMOTE and one with the original Batch rebalanced with SMOTE. The one with the better k-statistic is chosen to be the new learner and both the Batch and the resetBatch are emptied.
 
+## Hoeffding Adaptive Tree
+All the above algorithms have been tested using Hoeffding Adaptive Tree (HAT) as base learner
+The Hoeffding Tree is a tree based streaming classification algorithm that use the Hoeffding bound to decide if a leaf need to be splitted.
+The Adaptive version uses an ADWIN to detect change and start building new trees. As soon as there is evidence that the new tree is more accurate, the old tree is replaced.
 
 ## ESOS-ELM
 
@@ -70,38 +74,40 @@ I collected all the paper that i am referring to [here](papers/)
 
 # Dataset generation
 
-I generated 9 different types of drift forking this [generator](https://github.com/dabrze/imbalanced-stream-generator) and building a script to aumatically generate the data streams files. 
+I generated 9 different types of drift forking this [generator](https://github.com/dabrze/imbalanced-stream-generator) and building a script to aumatically generate the data streams files. You can find my version of the generator and the script [here](datasets/Generator) 
 Datastreams specifics:
 * 100 thousands examples each
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
-* 9 drifts
+* 9 drifts:
 
 | Attempt                          | #1                                                                       |
 | :------------------------------: | :----------------------------------------------------------------------: |
-| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minoritysudden.gif)    |
-| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
-| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)        |
-| jitter                           | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)                |
-| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
 | appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
 | splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clustersincremental.gif)    |
-| borderline                       | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)            |
 | shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
+| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
+| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
+| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minoritysudden.gif)         |
+| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)        |
+| jitter                           | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)                |
+| borderline                       | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)            |
 
 
-I analyzed 3 types of drift with 4 imbalance rates for each Sea and Sine [datasets](datasets/SeaSine).
-I generated 9 type with this data [genarator](datasets/Generator) each with 4 imbalance rates.
-I also analyzed 3 real dataset you can find [here](datasets/Real). 
+I also analyzed the Sea and Sine [datasets](datasets/SeaSine) each with:
+* 2 types of drift: sudden, incremental
+* 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
+
+I analyzed 3 real imbalanced datasets you can find [here](datasets/Real). 
 
 
 # Algorithms implementation
 
-
-I implemented the algorithms in moa [here](algorithms code).
-Here I uploaded only the corresponding java classes, for the complete moa fork refer to this [moa fork](https://github.com/08volt/moa "moa fork")).
+The moa algorithms implementation can be found [here](algorithms_java).
+In this repository I uploaded only the corresponding java classes, for the complete version of moa refer to this [moa fork](https://github.com/08volt/moa "moa fork")).
 
 # Experiments
+
 I run 10 experiments for each Algorithm on each Dataset using an AWS virtual machine.
 [Here](tests) you can find the code to build the bash to run the experiments and the code to build the query to extract the results from influx.
 
