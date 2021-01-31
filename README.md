@@ -84,7 +84,7 @@ Datastreams specifics:
 | Attempt                          | #1                                                                       |
 | :------------------------------: | :----------------------------------------------------------------------: |
 | appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
-| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clustersincremental.gif)    |
+| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)    |
 | shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
 | clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
 | disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
