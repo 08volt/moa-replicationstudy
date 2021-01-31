@@ -67,6 +67,7 @@ Ensemble of Subset Online Sequential Extreme Learning Machine (ESOS-ELM), has be
 I collected all the paper that i am referring to [here](papers/) 
 
 
+
 # Dataset generation
 
 I generated 9 different types of drift forking this [generator](https://github.com/dabrze/imbalanced-stream-generator) and building a script to aumatically generate the data streams files. 
@@ -74,21 +75,19 @@ Datastreams specifics:
 * 100 thousands examples each
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
-* 9 drifs
+* 9 drifts
 
-![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)
+----------------------------------------------------------------------------------------------------------
 
-Drift Name | Before | After
------------- | ------------- | ------------- | -------------
-appearing-minority | Content before | content after | 
-disappearing-minority | Content before | content after | a
-minority-share | Content before | content after | a
-jitter | Content before | content after | a
-clusters-movement | Content before | content after | a
-appearing-clusters | Content before | content after | a
-splitting-clusters | Content before | content after | a
-borderline | Content before | content after | a
-shapeshift | Content before | content after | a
+appearing-minority | ![](datasets/Generator/drifts_gifs/appearing-minorityincremental.gif)
+disappearing-minority | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif)
+minority-share | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)
+jitter | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)
+clusters-movement | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)
+appearing-clusters | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)
+splitting-clusters | ![](datasets/Generator/drifts_gifs/splitting-clustersincremental.gif)
+borderline | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)
+shapeshift | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)
 
 
 I analyzed 3 types of drift with 4 imbalance rates for each Sea and Sine [datasets](datasets/SeaSine).
