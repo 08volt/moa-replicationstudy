@@ -1,5 +1,5 @@
 
-### Replication study on Stream Machine Learning algorithms for Class Imbalance and Concept Drift
+## Replication study on Streaming Machine Learning algorithms for Class Imbalance and Concept Drift
 
 ![](https://camo.githubusercontent.com/1ef7c1925e77c6f8b1c9f5adfdcea37dba30c98478264503067a91076db66144/687474703a2f2f6d6f612e636d732e7761696b61746f2e61632e6e7a2f77702d636f6e74656e742f75706c6f6164732f323031342f31312f4c6f676f4d4f412e6a7067)
 
@@ -30,7 +30,7 @@ UOB will update each learner 1 time if the sample is from a minority class, othe
 ### Improved OOB and UOB
 
 This algorithms come from a more recente study of OOB and UOB claming that the strategy of setting lambda is not consistent with the imbalance degree, and varies with the number of classes.
-In this version of Online Bagging lambda is determined by the size ratio between classes. Considering the positive class + the minority and the megative class - the majority, improved OOB will set lambda(+) = w(-)/w(+) and lambda(-) = 1, improved UOB instead will set lambda(+) = 1 and lambda(-) = w(+)/w(-)
+In this version of Online Bagging lambda is determined by the size ratio between classes. Considering the positive class (+) the minority and the megative class (-) the majority, improved OOB will set lambda(+) = w(-)/w(+) and lambda(-) = 1, improved UOB instead will set lambda(+) = 1 and lambda(-) = w(+)/w(-)
 
 ### Weighted Ensambles
 
@@ -40,10 +40,29 @@ In order to weight the predictions of the OOB and UOB their G-mean values are co
 WEOB1 use the normalized G-mean values of OOB and UOB as their weights to compute a weighted sum of their predictions, WEOB2 instead compares the G-mean values and use only the prediction of the model with the higher one.
 
 ## CSMOTE
+Synthetic Minority Oversampling Technique (SMOTE) is one of the most used oversampling techniquesto solve the imbalance problem. It consinst on generating synthetic samples from a linear interpolation between a minority class sample and one of his neighbour selected randomly from his k-nearest neighbour.
+
+CSMOTE keeps the minority samples in a window managed by ADWIN. ADaptive sliding WINdow (ADWIN) is a chenge detector and estimation algorithm based on the exponantial histogram. It keeps a variable lenght window consistent with the hypothesis "there has been no change in the avarage value inside the window" by checking chenge at many scales simultaneously.
+
+When the minority sample ratio is less than a certain threshold, an online SMOTE version is applied until the minority sample ratio is greater or equal than the threshold. The model is then trained with the new samples generated.
+
 
 ## RebalanceStream
 
+RebelanceStream aims at dealing with both concpet drift and class imbalance using ADWIN and multiple models. 
+When new samples arrives, they are added to a batch and one base learner is trained.
+
+When ADWIN detects a warning for a concept drift, the algorithm start collecting samples in a new batch called resetBatch. When the ADWIN detect the change 3 new learners are trained, one only with the resetBatch, one with the resetBatch balanced with SMOTE and one with the original Batch rebalanced with SMOTE. The one with the better k-statistic is chosen to be the new learner and both the Batch and the resetBatch are emptied.
+
+
 ## ESOS-ELM
+
+Extreme learning machine (ELM) provides a single step least square estimatation method for training single hidden layer feed forward network. The input weights and biases connecting input layer to the hidden layer (hidden node parameters) are assigned randomly and the weights connecting the hidden layer and the output layer (output weights) are determined analytically. Compared to the traditional iterative gradient decent methods such as back propagation algorithm, training is extremely fast in ELM and it just requires a matrix inversion.
+
+The online version of this algorithm is called OS-ELM and it updates the ELM with data chunks. Recently, weighted extreme learning machine (WELM) has been proposed as a cost-sensitive algorithm for class imbalance learning and the corresponding online version WOS-ELM. However, WOS-ELM was proposed only for sta- tionary environments and may not be appropriate for concept drift learning. 
+
+Ensemble of Subset Online Sequential Extreme Learning Machine (ESOS-ELM), has been proposed for class imbalance learning from a concept-drifting data stream. In ESOS-ELM, a minority class sample is processed by ‘m’ OS-ELM classifiers (‘m’ is the imbalance ratio) while a majority class sample is processed by a single classifier. The majority class samples are processed in a round robin fashion, i.e., the first majority class sample is processed by the first classifier, the second sample by the second classifier and so on. In this way, classifiers in the ensemble are trained with balanced subsets from the original imbalanced dataset. Furthermore the WELM is used as a batch classifier for recurrent concepts.
+
 
 I collected all the paper that i am referring to [here](papers/) 
 
