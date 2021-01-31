@@ -81,10 +81,10 @@ Datastreams specifics:
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
 * 9 drifts:
 
-| Attempt                          | #1                                                                       |
+| Name                             | Drift phase                                                              |
 | :------------------------------: | :----------------------------------------------------------------------: |
 | appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
-| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)    |
+| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
 | shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
 | clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
 | disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
