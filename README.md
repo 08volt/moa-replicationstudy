@@ -94,11 +94,11 @@ Datastreams specifics:
 | borderline                       | ![](datasets/Generator/drifts_gifs/borderline.gif)            |
 
 
-I also analyzed the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
+I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
-I analyzed 3 real imbalanced datasets you can find [here](datasets/Real). 
+I analyzed 3 real imbalanced datasets, you can find them [here](datasets/Real). 
 
 
 # Algorithms implementation
