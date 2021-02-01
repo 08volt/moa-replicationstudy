@@ -83,15 +83,15 @@ Datastreams specifics:
 
 | Name                             | Drift phase                                                              |
 | :------------------------------: | :----------------------------------------------------------------------: |
-| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
+| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)    |
 | splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
-| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
-| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
-| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
-| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minoritysudden.gif)         |
-| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)        |
-| jitter                           | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)                |
-| borderline                       | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)            |
+| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshift.gif)            |
+| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)     |
+| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif) |
+| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)         |
+| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-share.gif)        |
+| jitter                           | ![](datasets/Generator/drifts_gifs/jitter.gif)                |
+| borderline                       | ![](datasets/Generator/drifts_gifs/borderline.gif)            |
 
 
 I also analyzed the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
