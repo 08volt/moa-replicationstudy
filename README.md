@@ -83,22 +83,22 @@ Datastreams specifics:
 
 | Name                             | Drift phase                                                              |
 | :------------------------------: | :----------------------------------------------------------------------: |
-| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clustersincremental.gif)    |
+| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)    |
 | splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
-| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshiftincremental.gif)            |
-| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movementincremental.gif)     |
-| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minorityincremental.gif) |
-| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minoritysudden.gif)         |
-| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-shareincremental.gif)        |
-| jitter                           | ![](datasets/Generator/drifts_gifs/jitterincremental.gif)                |
-| borderline                       | ![](datasets/Generator/drifts_gifs/borderlineincremental.gif)            |
+| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshift.gif)            |
+| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)     |
+| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif) |
+| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)         |
+| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-share.gif)        |
+| jitter                           | ![](datasets/Generator/drifts_gifs/jitter.gif)                |
+| borderline                       | ![](datasets/Generator/drifts_gifs/borderline.gif)            |
 
 
-I also analyzed the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
+I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
-I analyzed 3 real imbalanced datasets you can find [here](datasets/Real). 
+I analyzed 3 real imbalanced datasets, you can find them [here](datasets/Real). 
 
 
 # Algorithms implementation
