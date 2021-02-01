@@ -114,13 +114,29 @@ I run 10 experiments for each Algorithm on each Dataset using an AWS virtual mac
 # Results
 
 F1 score:
+![](results/plots/FscoreImbalance.png)
 
-![](results/plots/F1_4x3.png)
+![](results/plots/FscoreType.png)
+
+![](results/plots/Fscoreminority.png)
+
+![](results/plots/Fscoremajority.png)
+
 
 Recall:
 
-![](results/plots/Recall_3x4_ALL.png)
+![](results/plots/RecallImbalance.png)
+
+![](results/plots/RecallType.png)
+
+![](results/plots/Recall-.png)
+
+![](results/plots/Recall+.png)
 
 Time and Memory:
 
-![](results/plots/TM_GRPTYPE_ALL.png)
+![](results/plots/Time.png)
+![](results/plots/Memory.png)
+![](results/plots/Time-MemoryOB.png)
+
+
