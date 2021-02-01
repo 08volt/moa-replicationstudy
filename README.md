@@ -129,9 +129,9 @@ Recall:
 
 ![](results/plots/RecallType.png)
 
-![](results/plots/Recall-.png)
-
 ![](results/plots/Recall+.png)
+
+![](results/plots/Recall-.png)
 
 Time and Memory:
 
