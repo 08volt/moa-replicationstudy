@@ -129,14 +129,14 @@ Recall:
 
 ![](results/plots/RecallType.png)
 
-![](results/plots/Recall+.png)
+![](results/plots/Recallminority.png)
 
-![](results/plots/Recall-.png)
+![](results/plots/Recallmajority.png)
 
 Time and Memory:
 
 ![](results/plots/Time.png)
 ![](results/plots/Memory.png)
-![](results/plots/Time-MemoryOB.png)
+![](results/plots/TimeMemoryOB.png)
 
 
