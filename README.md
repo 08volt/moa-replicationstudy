@@ -94,7 +94,11 @@ Datastreams specifics:
 | borderline                       | ![](datasets/Generator/drifts_gifs/borderline.gif)            |
 
 
-I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine), each one in the following versions:
+I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine) generated with the corresponding moa generators.
+SINE has two relevant attributes. Each attributes has values uniformly distributed in [0; 1]. In the first context all points below the curve y = sin(x) are classified as positive.
+SEA concepts functions are described in the paper "A streaming ensemble algorithm (SEA) for large-scale classification".
+
+Each one in the following versions:
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
