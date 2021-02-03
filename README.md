@@ -185,7 +185,7 @@ Fscore is a measure that take into account both the recall and the precision whi
 
 ## Time and Memory:
 
-When evaluating algorithms it is important to keep track of the resources they need. All the Online Bagging based algorithms are much more fast and they need less memory. ESOS-ELM is the only one that it isn't an ensamble of HAT which will condition the resource evaluation.
+When evaluating algorithms it is important to keep track of the resources they need. All the Online Bagging based algorithms are much more fast and they need less memory. ESOS-ELM is the only one that isn't based on HAT which will condition the resource evaluation.
 The last graph compares only the Online Bagging based algorithms. The ones with better Fscore are the one that occupy more resources.
 
 ![](results/plots/Time.png)
