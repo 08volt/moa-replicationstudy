@@ -72,7 +72,7 @@ I collected all the paper that i am referring to [here](papers/)
 
 
 
-# Dataset generation
+# Datastreams
 
 I generated 9 different types of drift forking this [generator](https://github.com/dabrze/imbalanced-stream-generator) and building a script to aumatically generate the data streams files. You can find my version of the generator and the script [here](datasets/Generator) 
 Datastreams specifics:
@@ -98,7 +98,27 @@ I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine), e
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
-I analyzed 3 real imbalanced datasets, you can find them [here](datasets/Real). 
+I analyzed 3 real imbalanced datasets: Elec, PAKDD, KDDCup:
+
+Elec comes from Electricity and it is another widely used dataset described by M. Harries and analysed by Gama. This data was collected from the Australian New South Wales Electricity Market. In this market, prices are not fixed and are affected by demand and supply of the market. They are set every five minutes. The ELEC dataset contains 45312 instances. The class label identifies the change of the price relative to a moving average of the last 24 hours.
+Instances: 45312
+Negative class %: 57%
+Positive class %: 42%
+
+The PAKDD 2009 competition focuses on the problem of credit risk assessment. 
+Instances: 50000
+Negative class %: 80%
+Positive class %: 20%
+
+KDDCup 1999 dataset which is about cumputer network intrusion detection. The task for the classifier learning contest organized in conjunction with the KDD'99 conference was to learn a predictive model (i.e. a classifier) capable of distinguishing between legitimate and illegitimate connections in a computer network.
+Instances: 494021
+Negative class %: 80%
+Positive class %: 20%
+
+you can find them [here](datasets/Real). 
+
+
+![](results/plots/Real/classprobability.png)
 
 
 # Algorithms implementation
@@ -111,7 +131,7 @@ In this repository I uploaded only the corresponding java classes, for the compl
 I run 10 experiments for each Algorithm on each Dataset using an AWS virtual machine.
 [Here](tests) you can find the code to build the bash to run the experiments and the code to build the query to extract the results from influx.
 
-# Results
+# Results on Artificial Datastreams
 
 F1 score:
 ![](results/plots/FscoreImbalance.png)
@@ -138,5 +158,16 @@ Time and Memory:
 ![](results/plots/Time.png)
 ![](results/plots/Memory.png)
 ![](results/plots/TimeMemoryOB.png)
+
+# Results on Real Datasets
+
+![](results/plots/Real/Fscore.png)
+![](results/plots/Real/Recall.png)
+![](results/plots/Real/Gmean.png)
+![](results/plots/Real/Fscores.png)
+![](results/plots/Real/Recalls.png)
+![](results/plots/Real/Gmeans.png)
+
+
 
 
