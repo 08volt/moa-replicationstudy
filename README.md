@@ -17,7 +17,7 @@ The algorithms I have tested are Online Bagging techniques, CSMOTE, Rebalance St
 
 ## Online Bagging
 
-The idea of this class of algorithms is to make an ensamble of base learners where for each one of them the classes are balanced, choosing how many times the learners will train with the new sample based its class. This methods continuosly learn the class imbalance status in data streams and the sampling parameters for the learners adaptively.
+The idea of this class of algorithms is to make an ensamble of base learners where for each one of them the classes are balanced, choosing how many times the learners will train with a new arriving sample based its class. This methods continuosly learn the class imbalance status in data streams and the sampling parameters for the learners adaptively.
 
 ### OOB and UOB
 The class balancing can be done in two ways: Undesampling the majority class examples or Oversampling the minority class examples. 
