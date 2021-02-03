@@ -30,7 +30,7 @@ UOB will update each learner 1 time if the sample is from a minority class, othe
 ### Improved OOB and UOB
 
 This algorithms come from a more recente study of OOB and UOB claming that the strategy of setting lambda is not consistent with the imbalance degree, and varies with the number of classes.
-In this version of Online Bagging lambda is determined by the size ratio between classes. Considering the positive class (+) the minority and the megative class (-) the majority, improved OOB will set lambda(+) = w(-)/w(+) and lambda(-) = 1, improved UOB instead will set lambda(+) = 1 and lambda(-) = w(+)/w(-)
+In this version of Online Bagging lambda is determined by the size ratio between classes. Considering the positive class (+) the minority and the negative class (-) the majority, improved OOB will set lambda(+) = w(-)/w(+) and lambda(-) = 1, improved UOB instead will set lambda(+) = 1 and lambda(-) = w(+)/w(-)
 
 ### Weighted Ensambles
 
