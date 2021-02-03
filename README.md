@@ -137,17 +137,9 @@ I run 10 experiments for each Algorithm on each Dataset using an AWS virtual mac
 
 # Results on Artificial Datastreams
 
-F1 score:
-![](results/plots/FscoreImbalance.png)
+## Recall:
 
-![](results/plots/FscoreType.png)
-
-![](results/plots/Fscoreminority.png)
-
-![](results/plots/Fscoremajority.png)
-
-
-Recall:
+Recall is a measure of how many samples from a class are correctly predicted with respect to the total samples of that class.
 
 ![](results/plots/RecallImbalance.png)
 
@@ -157,7 +149,39 @@ Recall:
 
 ![](results/plots/Recallmajority.png)
 
-Time and Memory:
+![](results/plots/RecallSeriesminority.png)
+
+## Gmean:
+
+Gmean is the geometric mean of the recalls of all the classes.
+
+![](results/plots/GmeanImbalance.png)
+
+![](results/plots/GmeanType.png)
+
+![](results/plots/Gmean.png)
+
+
+
+
+
+## Fscore:
+
+Fscore is a measure that take into account both the recall and the precision of a class
+
+![](results/plots/FscoreImbalance.png)
+
+![](results/plots/FscoreType.png)
+
+![](results/plots/Fscoreminority.png)
+
+![](results/plots/Fscoremajority.png)
+
+![](results/plots/FscoreSeriesminority.png)
+
+
+
+## Time and Memory:
 
 ![](results/plots/Time.png)
 ![](results/plots/Memory.png)
