@@ -139,7 +139,9 @@ I run 10 experiments for each Algorithm on each Dataset using an AWS virtual mac
 
 ## Recall:
 
-Recall is a measure of how many samples from a class are correctly predicted with respect to the total samples of that class.
+Recall is a measure of how many samples from one class are correctly predicted with respect to the total samples of that class.
+The following plots compare the algorithms recall grouping the results by imbalance rate and drift type. 
+The greater recall of the minority class is achived by the Improved versione of UOB and at the end of the stream the higher one is achived by UOB, ESOS-ELM need to process a big amount of data to achive good performances. Rebalance Stream has the worst performance on the minority class recall but it is the best with the majority class.
 
 ![](results/plots/RecallImbalance.png)
 
@@ -153,7 +155,7 @@ Recall is a measure of how many samples from a class are correctly predicted wit
 
 ## Gmean:
 
-Gmean is the geometric mean of the recalls of all the classes.
+Gmean is the geometric mean of the recalls of all the classes, thus it is possible to compare the aggregate algorithms performance on both classes. The greater G-mean is achived by the OOB, it's improved version and the first version of the weighted ensamble, all three algorithms have very similar results.
 
 ![](results/plots/GmeanImbalance.png)
 
@@ -167,7 +169,7 @@ Gmean is the geometric mean of the recalls of all the classes.
 
 ## Fscore:
 
-Fscore is a measure that take into account both the recall and the precision of a class
+Fscore is a measure that take into account both the recall and the precision which is a measure of how many samples from one class are correctly predicted with respect to all the samples predicted of that class. The best Fscore of the minority class is achived by the OOB and its improved version. OOBs algorithms have a greater precision with respect to the corresponding UOBs, which in it's original version is surpassed by the Rebalance Stream at the last evaluation step. This means that the Rebalance Stream doesn't predict many samples to be from the minority class, but the one that does are mostly correct.
 
 ![](results/plots/FscoreImbalance.png)
 
@@ -183,11 +185,16 @@ Fscore is a measure that take into account both the recall and the precision of 
 
 ## Time and Memory:
 
+When evaluating algorithms it is important to keep track of the resources they need. All the Online Bagging based algorithms are much more fast and they need less memory. ESOS-ELM is the only one that it isn't an ensamble of HAT which will condition the resource evaluation.
+The last graph compares only the Online Bagging based algorithms. The ones with better Fscore are the one that occupy more resources.
+
 ![](results/plots/Time.png)
 ![](results/plots/Memory.png)
 ![](results/plots/TimeMemoryOB.png)
 
 # Results on Real Datasets
+
+The reals datasets differ from the artificial ones in the number of feature which are more and in the use of categorical feautures. 
 
 ![](results/plots/Real/Fscore.png)
 ![](results/plots/Real/Recall.png)
