@@ -40,11 +40,11 @@ In order to weight the predictions of the OOB and UOB their G-mean values are co
 WEOB1 use the normalized G-mean values of OOB and UOB as their weights to compute a weighted sum of their predictions, WEOB2 instead compares the G-mean values and use only the prediction of the model with the higher one.
 
 ## CSMOTE
-Synthetic Minority Oversampling Technique (SMOTE) is one of the most used oversampling techniquesto solve the imbalance problem. It consinst on generating synthetic samples from a linear interpolation between a minority class sample and one of his neighbour selected randomly from his k-nearest neighbour.
+Synthetic Minority Oversampling Technique (SMOTE) is one of the most used oversampling technique to solve the imbalance problem. It consinst on generating synthetic samples from a linear interpolation between a minority class sample and one of his neighbour selected randomly from his k-nearest neighbours.
 
-CSMOTE keeps the minority samples in a window managed by ADWIN. ADaptive sliding WINdow (ADWIN) is a chenge detector and estimation algorithm based on the exponantial histogram. It keeps a variable lenght window consistent with the hypothesis "there has been no change in the avarage value inside the window" by checking chenge at many scales simultaneously.
+CSMOTE is an Online version of SMOTE that keeps the minority samples in a window managed by ADWIN. ADaptive sliding WINdow (ADWIN) is a chenge detector and estimation algorithm based on the exponantial histogram. It keeps a variable lenght window consistent with the hypothesis "there has been no change in the avarage value inside the window" by checking chenge at many scales simultaneously.
 
-When the minority sample ratio is less than a certain threshold, an online SMOTE version is applied until the minority sample ratio is greater or equal than the threshold. The model is then trained with the new samples generated.
+When the minority sample ratio is less than a certain threshold, SMOTE is applied until the minority sample ratio is greater or equal than the threshold. The model is then trained with the new samples generated.
 
 
 ## RebalanceStream
@@ -52,12 +52,13 @@ When the minority sample ratio is less than a certain threshold, an online SMOTE
 RebelanceStream aims at dealing with both concpet drift and class imbalance using ADWIN and multiple models. 
 When new samples arrives, they are added to a batch and one base learner is trained.
 
-When ADWIN detects a warning for a concept drift, the algorithm start collecting samples in a new batch called resetBatch. When the ADWIN detect the change 3 new learners are trained, one only with the resetBatch, one with the resetBatch balanced with SMOTE and one with the original Batch rebalanced with SMOTE. The one with the better k-statistic is chosen to be the new learner and both the Batch and the resetBatch are emptied.
+ADWIN deals with conpet drifts detecting a warning with a first threshold and than confirming it if the change is bigger than a second threshold.
+At the warning detection, the algorithm start collecting samples in a new batch called resetBatch. When the ADWIN confirm the change 3 new learners are trained, one only with the resetBatch, one with the resetBatch balanced with SMOTE and one with the original Batch rebalanced with SMOTE. The one with the better k-statistic is chosen to be the new learner and both the Batch and the resetBatch are emptied.
 
 ## Hoeffding Adaptive Tree
-All the above algorithms have been tested using 10 Hoeffding Adaptive Tree (HAT) as base learner
+All the above algorithms have been tested with an ensamble of 10 Hoeffding Adaptive Tree (HAT) as base learners.
 The Hoeffding Tree is a tree based streaming classification algorithm that use the Hoeffding bound to decide if a leaf need to be splitted.
-The Adaptive version uses an ADWIN to detect change and start building new trees. As soon as there is evidence that the new tree is more accurate, the old tree is replaced.
+The Adaptive version (HAT) uses an ADWIN to detect change and start building new trees. As soon as there is evidence that the new tree is more accurate, the old tree is replaced.
 
 ## ESOS-ELM
 
