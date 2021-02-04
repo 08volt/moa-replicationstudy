@@ -103,9 +103,9 @@ Each one in the following versions:
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
-I analyzed 3 real imbalanced datasets: Elec, PAKDD, KDDCup:
+I analyzed 3 real imbalanced datasets: Elec, PAKDD, KDDCup:  
 
-Elec comes from Electricity and it is another widely used dataset described by M. Harries and analysed by Gama. This data was collected from the Australian New South Wales Electricity Market. In this market, prices are not fixed and are affected by demand and supply of the market. They are set every five minutes. The ELEC dataset contains 45312 instances. The class label identifies the change of the price relative to a moving average of the last 24 hours.   
+Elec comes from Electricity and it is another widely used dataset described by M. Harries and analysed by Gama. This data was collected from the Australian New South Wales Electricity Market. In this market, prices are not fixed and are affected by demand and supply of the market. They are set every five minutes. The class label identifies the change of the price relative to a moving average of the last 24 hours.     
 Instances: 45312  
 Negative class %: 57%  
 Positive class %: 42%  
