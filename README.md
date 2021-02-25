@@ -105,11 +105,11 @@ Datastreams specifics:
 | splitting-clusters               | P(y\|X)    | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
 | shapeshift                       | P(y\|X)    | ![](datasets/Generator/drifts_gifs/shapeshift.gif)                       |
 | clusters-movement                | P(y\|X)    | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)                |
-| disappearing-minority            | P(y)      | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif)            |
-| appearing-minority               | P(y)      | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)               |
-| minority-share                   | P(y)      | ![](datasets/Generator/drifts_gifs/minority-share.gif)                   |
-| jitter                           | P(y|X)    |![](datasets/Generator/drifts_gifs/jitter.gif)                            |
-| borderline                       | P(y|X)    | ![](datasets/Generator/drifts_gifs/borderline.gif)                       |
+| disappearing-minority            | P(y)       | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif)            |
+| appearing-minority               | P(y)       | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)               |
+| minority-share                   | P(y)       | ![](datasets/Generator/drifts_gifs/minority-share.gif)                   |
+| jitter                           | P(y\|X)    |![](datasets/Generator/drifts_gifs/jitter.gif)                            |
+| borderline                       | P(y\|X)    | ![](datasets/Generator/drifts_gifs/borderline.gif)                       |
 
 
 I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine) generated with the corresponding moa generators.   
