@@ -101,10 +101,10 @@ Datastreams specifics:
 
 | Name                             |Drift type | Drift phase                                                              |
 | :------------------------------: | :-------: | :----------------------------------------------------------------------: |
-| appearing-clusters               | P(y|X)    | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)               |
-| splitting-clusters               | P(y|X)    | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
-| shapeshift                       | P(y|X)    | ![](datasets/Generator/drifts_gifs/shapeshift.gif)                       |
-| clusters-movement                | P(y|X)    | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)                |
+| appearing-clusters               | P(y\|X)    | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)               |
+| splitting-clusters               | P(y\|X)    | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
+| shapeshift                       | P(y\|X)    | ![](datasets/Generator/drifts_gifs/shapeshift.gif)                       |
+| clusters-movement                | P(y\|X)    | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)                |
 | disappearing-minority            | P(y)      | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif)            |
 | appearing-minority               | P(y)      | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)               |
 | minority-share                   | P(y)      | ![](datasets/Generator/drifts_gifs/minority-share.gif)                   |
