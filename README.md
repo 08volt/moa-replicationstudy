@@ -165,33 +165,45 @@ I build a Benchmarking environment in order to automate the process of running t
 
 # Results on Artificial Datastreams
 
-## P(X|y) drifts*:
+## P(X|y) drifts:
 
-P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
+P(X|y) drifts, also called *Virtual drifts*, makes the examples probability distribution on the instance space change but the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
 - SEA P(X|y)
 - SINE P(X|y)
 
+![](results/plots/Artificial/pXy.png)
 
-![](results/plots/GmeanImbalance.png)
+## P(y|X) drifts:
 
-![](results/plots/GmeanType.png)
+P(X|y) drifts, also called *Real drifts*, are the ones that makes the decision boundaryshift.  The artificial data streams with this kind of drift are::
+- SEA P(y|X)
+- SINE P(y|X)
+- Borderline shift
+- Shape shift
+- jitter
+- Cluster movement
+- Appearing cluster
+- Splitting clusters
 
-![](results/plots/Gmean.png)
-## P(X|y) drifts*:
-
-P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
-- SEA P(X|y)
-- SINE P(X|y)
-
-## P(X|y) drifts*:
-
-P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
-- SEA P(X|y)
-- SINE P(X|y)
-
-
+![](results/plots/Artificial/Rpyx.png)
+![](results/plots/Artificial/RFapyx.png)
+![](results/plots/Artificial/Rdpyx.png)
+![](results/plots/Artificial/KyX.png)
 
 
+
+## P(y) drifts:
+
+The P(y) drifts affect the imbalance ratio. Each of the data streams with this kind of drift have different level of change. In the list below I details the different ratios. I separate the imbalance ratio before and after the drift with \textit{"-"} and the positive and negative class probability with ":", the *"m"* identifies the minority class ratio of the stream and the *"M"* the majority one:
+- SEA P(y): $0.5:0.5 - m:M$
+- SINE P(y): $m:M - M:m$
+- Disappearing minority: $m:M - 0:1$
+- Appearing minority: $0:1 - m:M$
+- Minority share: $0:1 - m:M$
+
+![](results/plots/Artificial/Rpy.png)
+![](results/plots/Artificial/Gpy.png)
+![](results/plots/Artificial/Repy.png)
 
 
 ## Time and Memory:
@@ -199,21 +211,15 @@ P(X|y) drifts makes the examples probability distribution on the instance space 
 When evaluating algorithms it is important to keep track of the resources they need. All the Online Bagging based algorithms are much more fast and they need less memory. ESOS-ELM is the only one that isn't based on HAT which will condition the resource evaluation.
 The last graph compares only the Online Bagging based algorithms. The ones with better Fscore are the one that occupy more resources.
 
-![](results/plots/Time.png)
-![](results/plots/Memory.png)
-![](results/plots/TimeMemoryOB.png)
+![](results/plots/TM/Dashboard.png)
+![](results/plots/TM/TM_OB.png)
 
 # Results on Real Datasets
 
-The reals datasets differ from the artificial ones in the number of feature which are more and in the use of categorical feautures. 
+The reals datasets differ from the artificial ones in the number of feature which are more and in the use of categorical feautures. The results are different from one to the other: 
 
-![](results/plots/Real/Fscore.png)
-![](results/plots/Real/Recall.png)
-![](results/plots/Real/Gmean.png)
-![](results/plots/Real/Fscores.png)
+![](results/plots/Real/DashboardG.png)
 ![](results/plots/Real/Recalls.png)
-![](results/plots/Real/Gmeans.png)
-
 
 
 
