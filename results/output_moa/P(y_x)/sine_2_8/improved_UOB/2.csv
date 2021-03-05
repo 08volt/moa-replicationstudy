@@ -1,0 +1,14 @@
+
+{M}assive {O}nline {A}nalysis
+Version:  20.07 July 2020
+Copyright: (C) 2007-2020 University of Waikato, Hamilton, New Zealand
+Web: http://moa.cms.waikato.ac.nz/
+
+- 0,00s [running] Preparing option learner...                                  WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by sizeof.agent.SizeOfAgent (file:/Users/08volt/Desktop/StremingML/moa-algorithms-comparison/tests/moa.jar) to field java.util.HashMap.table
+WARNING: Please consider reporting this to the maintainers of sizeof.agent.SizeOfAgent
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+\ 0,96s [running] 10,10% Evaluating learner...                                 | 1,93s [running] 32,94% Evaluating learner...                                 / 2,89s [running] 54,96% Evaluating learner...                                 - 3,86s [running] 80,63% Evaluating learner...                                                                                                                
+Task completed in 4,43s (CPU time)
+
