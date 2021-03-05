@@ -171,7 +171,7 @@ P(X|y) drifts, also called *Virtual drifts*, makes the examples probability dist
 - SEA P(X|y)
 - SINE P(X|y)
 
-![](results/plots/Artificial/pXy.png)
+![](results/plots/Tableau_plots/Art/pXy.png)
 
 ## P(y|X) drifts:
 
@@ -185,10 +185,10 @@ P(X|y) drifts, also called *Real drifts*, are the ones that makes the decision b
 - Appearing cluster
 - Splitting clusters
 
-![](results/plots/Artificial/Rpyx.png)
-![](results/plots/Artificial/RFapyx.png)
-![](results/plots/Artificial/Rdpyx.png)
-![](results/plots/Artificial/KyX.png)
+![](results/plots/Tableau_plots/Art/Rpyx.png)
+![](results/plots/Tableau_plots/Art/RFapyx.png)
+![](results/plots/Tableau_plots/Art/Rdpyx.png)
+![](results/plots/Tableau_plots/Art/KyX.png)
 
 
 
@@ -201,9 +201,9 @@ The P(y) drifts affect the imbalance ratio. Each of the data streams with this k
 - Appearing minority: $0:1 - m:M$
 - Minority share: $0:1 - m:M$
 
-![](results/plots/Artificial/Rpy.png)
-![](results/plots/Artificial/Gpy.png)
-![](results/plots/Artificial/Repy.png)
+![](results/plots/Tableau_plots/Art/Rpy.png)
+![](results/plots/Tableau_plots/Art/Gpy.png)
+![](results/plots/Tableau_plots/Art/Repy.png)
 
 
 ## Time and Memory:
@@ -211,15 +211,15 @@ The P(y) drifts affect the imbalance ratio. Each of the data streams with this k
 When evaluating algorithms it is important to keep track of the resources they need. All the Online Bagging based algorithms are much more fast and they need less memory. ESOS-ELM is the only one that isn't based on HAT which will condition the resource evaluation.
 The last graph compares only the Online Bagging based algorithms. The ones with better Fscore are the one that occupy more resources.
 
-![](results/plots/TM/Dashboard.png)
-![](results/plots/TM/TM_OB.png)
+![](results/plots/Tableau_plots/tm/Dashboard.png)
+![](results/plots/Tableau_plots/tm/TM_OB.png)
 
 # Results on Real Datasets
 
 The reals datasets differ from the artificial ones in the number of feature which are more and in the use of categorical feautures. The results are different from one to the other: 
 
-![](results/plots/Real/DashboardG.png)
-![](results/plots/Real/Recalls.png)
+![](results/plots/Tableau_plots/Real/DashboardG.png)
+![](results/plots/Tableau_plots/Real/Recalls.png)
 
 
 
