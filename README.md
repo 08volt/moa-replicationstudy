@@ -8,7 +8,24 @@
 
 Data Stream analysis is a rising field of Machine Learning where the data to be analyzed are coming from an infinite flow.
 This is introducing new challenges regarding the use of a finite number of resourses and the need to be at least as fast as the this flow.
-The difficulty on analyzind Data streams doesn't stop here. They usually have a very skewed class distribution known as **Class Imbalance**, and we need to be alert for **Concept Drifts**, indeed their distribution can change unpredictively over time.
+The difficulty on analyzind Data streams doesn't stop here. They usually have a very skewed class distribution known as **Class Imbalance**, and we need to be alert for **Concept Drifts**, indeed their distribution can change unpredictively over time. I studied how solving the class imbalance problem affect the performances during the various types of concept drifts.
+
+# Concept Drift
+
+The data streams have a temporal nature and  therefore their characteristics and distribution can change over time, therefore algorithms that seek to learn from data streams must be able to accurately model the underlying distribution but also to detect and adapt to changes as fast as possible.
+This characteristic of data stream is referred to as concept drift. The drift can occur with different speeds, sizes and severities and can change the model until previous samples become irrelevant.
+
+Bayes' theorem dissect *P(X,y)* into different term, each one can be a cause of change. The theorem is stated mathematically as the following equation: 
+
+*P(y|X) = ( P(X|y)P(y) ) / P(X)*
+
+
+Each one of the four probability can change:
+
+- *Pt(X) ~= Pt+1(X)* In this case it is possible to see changes in the overall distribution of data and it could also mean that the decision boundary is shifting. Being a change in *P(X)* independent from the class labels, it is insufficient to define a concept drift.
+- *Pt(X|y) ~= Pt+1(X|y)* In this case the probability of seeing a data example *X* is changing but its label *y* isn't. It shows that we are seeing new example from the same environment and the drift does not affect the decision boundary. This particular drift is known as *virtual concept drift*. 
+- *Pt(y|X) ~= Pt+1(y|X)* In this case the probability of a data example *X* of being of a particular class *y* is changing. This drift will cause the decision boundary to shift, and, as a consequence, it will lead algorithm's performances to deteriorate. This type of drift is known as *real concept drift*.
+- *Pt(y) ~= Pt+1(y)* In this case the probability of seeing any data example from a particular class y is changing. This will cause the class ratio to change and possibly the switch between minority and majority class. It doesn't necessary shift the decision boundary but it can affect the performances of the algorithms anyway due to a change in the class imbalance status.
 
 
 # State of Art
@@ -82,17 +99,17 @@ Datastreams specifics:
 * 3 different drift speeds: sudden at 50000th sample, incremental starting at 45000th sample and ending at 55000th sample, recurrent starting at 45000th sample, going until the 50000th and coming back at the original distribution at the 55000th sample.
 * 9 drifts:
 
-| Name                             | Drift phase                                                              |
-| :------------------------------: | :----------------------------------------------------------------------: |
-| appearing-clusters               | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)    |
-| splitting-clusters               | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
-| shapeshift                       | ![](datasets/Generator/drifts_gifs/shapeshift.gif)            |
-| clusters-movement                | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)     |
-| disappearing-minority            | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif) |
-| appearing-minority               | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)         |
-| minority-share                   | ![](datasets/Generator/drifts_gifs/minority-share.gif)        |
-| jitter                           | ![](datasets/Generator/drifts_gifs/jitter.gif)                |
-| borderline                       | ![](datasets/Generator/drifts_gifs/borderline.gif)            |
+| Name                             |Drift type | Drift phase                                                              |
+| :------------------------------: | :-------: | :----------------------------------------------------------------------: |
+| appearing-clusters               | P(y\|X)    | ![](datasets/Generator/drifts_gifs/appearing-clusters.gif)               |
+| splitting-clusters               | P(y\|X)    | ![](datasets/Generator/drifts_gifs/splitting-clusters.gif)               |
+| shapeshift                       | P(y\|X)    | ![](datasets/Generator/drifts_gifs/shapeshift.gif)                       |
+| clusters-movement                | P(y\|X)    | ![](datasets/Generator/drifts_gifs/clusters-movement.gif)                |
+| disappearing-minority            | P(y)       | ![](datasets/Generator/drifts_gifs/disappearing-minority.gif)            |
+| appearing-minority               | P(y)       | ![](datasets/Generator/drifts_gifs/appearing-minority.gif)               |
+| minority-share                   | P(y)       | ![](datasets/Generator/drifts_gifs/minority-share.gif)                   |
+| jitter                           | P(y\|X)    |![](datasets/Generator/drifts_gifs/jitter.gif)                            |
+| borderline                       | P(y\|X)    | ![](datasets/Generator/drifts_gifs/borderline.gif)                       |
 
 
 I also tested the algorithms on the Sea and Sine [datasets](datasets/SeaSine) generated with the corresponding moa generators.   
@@ -103,6 +120,11 @@ Each one in the following versions:
 * 2 types of drift: sudden, incremental
 * 4 imbalance rates: 1-9 / 2-8 / 3-7 / 4-6
 
+
+ - *p(y) Concept Drift*: Data streams SINE have a severe class imbalance change, in which the minority (majority) class of the first half of the data streams becomes the majority (minority) during the latter half. SEA have a less severe change, in which the data streams are balanced during the first half and become imbalanced during the latter half. In the gradual drifting cases, *p(y)* is changed linearly during the concept transition period (time step $45,000$ to time step $55,000$).
+- *p(X|y) Concept Drift*: The data stream is constantly imbalanced. In particular, the class imbalance ratio, respectively in each stream, is 1:9, 2:8, 3:7 and 4:6 both before and after the concept drift occurrence. The concept drift in each data stream is determined by introducing a constraint that changes the *x1* probability of the negative class (*0*) of being less than a certain value *n*. Before the drift occurrence, the probability is *p(x1 < n) = 0.9* while after, it is *p(x1 < n) = 0.1*. In the gradual drifting cases, it is changed linearly during the concept transition period.
+- *p(y|X)$ Concept Drift*: The data stream is constantly imbalanced. In particular, the class imbalance ratio, respectively in each stream, is 1:9, 2:8, 3:7 and 4:6 both before and after the concept drift occurrence. The data distribution in SINE involves a concept swap, while the data distribution in SEA has a concept drift due to the theta value change. The change in SEA is less severe than the change in SINE because some of the examples from the old concept are still valid under the new concept after the threshold moves completely.
+
 I analyzed 3 real imbalanced datasets: Elec, PAKDD, KDDCup:  
 
 Elec comes from Electricity and it is another widely used dataset described by M. Harries and analysed by Gama. This data was collected from the Australian New South Wales Electricity Market. In this market, prices are not fixed and are affected by demand and supply of the market. They are set every five minutes. The class label identifies the change of the price relative to a moving average of the last 24 hours.     
@@ -110,12 +132,13 @@ Instances: 45312
 Negative class %: 57%  
 Positive class %: 42%  
 
-The PAKDD 2009 competition focuses on the problem of credit risk assessment.   
+The 13th Pacific-Asia Knowledge Discovery and Data Mining conference (PAKDD 2009) presented a competition focused on the problem of credit risk assessment.
+The models needs to be robust against performance degradation caused by gradual market changes along a few years of business operation.   
 Instances: 50000  
 Negative class %: 80%  
 Positive class %: 20%  
 
-KDDCup 1999 dataset which is about cumputer network intrusion detection. The task for the classifier learning contest organized in conjunction with the KDD'99 conference was to learn a predictive model (i.e. a classifier) capable of distinguishing between legitimate and illegitimate connections in a computer network.  
+KDDCup 1999 is the data set used for The Third International Knowledge Discovery and Data Mining Tools Competition, which was held in conjunction with KDD-99 The Fifth International Conference on Knowledge Discovery and Data Mining. The competition task was classifier able to distinguish an intrusions from a normal connections. This database contains a standard set of data to be audited, which includes a wide variety of intrusions simulated in a military network environment.  
 Instances: 494021  
 Negative class %: 80%  
 Positive class %: 20%  
@@ -123,7 +146,7 @@ Positive class %: 20%
 you can find them [here](datasets/Real).   
 
 
-![](results/plots/Real/classprobability.png)
+![](results/plots/Real/classprobability1.png)
 
 
 # Algorithms implementation
@@ -133,54 +156,41 @@ In this repository I uploaded only the corresponding java classes, for the compl
 
 # Experiments
 
-I run 10 experiments for each Algorithm on each Dataset using an AWS virtual machine.  
-[Here](tests) you can find the code to build the bash to run the experiments and the code to build the query to extract the results from influx.
+
+I build a Benchmarking environment in order to automate the process of running the experiments and collecting the results. It is written in python and each step is done sequentially without needing any manual operation. Various configurations can be set just by updating the variables in a *Config* file, it is possible to set different algorithms, drifts and imbalance ratios. The benchmarking can be found [here](complete_exp_script/). It is composed by the following phases:
+- **Data streams generation**: The experiments starts with the generation of the data streams. I saved into file \textit{.arff} the data streams in order for their generation not to affect the time and memory statistic of the algorithms. A bash file will be created and executed in order to interface with the the MOA cli and run the tasks.
+- **Docker setup**: The experiments are run inside a docker container in order to measure their memory requirements with influx. A docker image need to be configured with the description of the library and software needed. It's composed by a *Dockerfile* containing the java version and the relative path to the working directory, and by a *Dockerfile.yml* describing the services and their configuration, in my case influx.
+- **Experiment execution**:During this phase a bash file is created. It will run the tests sequentially, each in a different docker container. The results of each experiment is saved in a different csv file which will contain all the output statistics from MOA. 
+- **Result summary**: During this phase a file for each of the statistics selected in the *Config* file is created. These files contains the results of all the experiments at each evaluation step. In the experiments an evaluation have been performed every *5000* instances. With these summaries a visualization and comparison of the performances will be straightforward. 
 
 # Results on Artificial Datastreams
 
-## Recall:
+## P(X|y) drifts*:
 
-Recall is a measure of how many samples from one class are correctly predicted with respect to the total samples of that class.  
-The following plots compare the algorithms recall grouping the results by imbalance rate and drift type.   
-The greater recall of the minority class is achived by the Improved versione of UOB and at the end of the stream the higher one is achived by UOB, ESOS-ELM need to process a big amount of data to achive good performances. Rebalance Stream has the worst performance on the minority class recall but it is the best with the majority class.  
+P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
+- SEA P(X|y)
+- SINE P(X|y)
 
-![](results/plots/RecallImbalance.png)
-
-![](results/plots/RecallType.png)
-
-![](results/plots/Recallminority.png)
-
-![](results/plots/Recallmajority.png)
-
-![](results/plots/RecallSeriesminority.png)
-
-## Gmean:
-
-Gmean is the geometric mean of the recalls of all the classes, thus it is possible to compare the aggregate algorithms performance on both classes. The greater G-mean is achived by the OOB, it's improved version and the first version of the weighted ensamble, all three algorithms have very similar results.
 
 ![](results/plots/GmeanImbalance.png)
 
 ![](results/plots/GmeanType.png)
 
 ![](results/plots/Gmean.png)
+## P(X|y) drifts*:
+
+P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
+- SEA P(X|y)
+- SINE P(X|y)
+
+## P(X|y) drifts*:
+
+P(X|y) drifts makes the examples probability distribution on the instance space change the decision boundary doesn’t shift. The artificial data streams with this kind of drift are:
+- SEA P(X|y)
+- SINE P(X|y)
 
 
 
-
-
-## Fscore:
-
-Fscore is a measure that take into account both the recall and the precision which is a measure of how many samples from one class are correctly predicted with respect to all the samples predicted of that class. The best Fscore of the minority class is achived by the OOB and its improved version. OOBs algorithms have a greater precision with respect to the corresponding UOBs, which in it's original version is surpassed by the Rebalance Stream at the last evaluation step. This means that the Rebalance Stream doesn't predict many samples to be from the minority class, but the one that does are mostly correct.
-
-![](results/plots/FscoreImbalance.png)
-
-![](results/plots/FscoreType.png)
-
-![](results/plots/Fscoreminority.png)
-
-![](results/plots/Fscoremajority.png)
-
-![](results/plots/FscoreSeriesminority.png)
 
 
 
