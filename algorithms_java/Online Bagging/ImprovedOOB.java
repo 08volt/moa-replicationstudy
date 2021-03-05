@@ -8,80 +8,35 @@
  * However, it implements the algorithm proposed in that paper. So, it should reflect those results.
  *
  */
-
+//Deeply modified by me
 // <---le19/01/18 modification to start class size as equal for all classes
 
 package moa.classifiers.meta;
-
-import com.github.javacliparser.FloatOption;
 import com.yahoo.labs.samoa.instances.Instance;
 
-import moa.classifiers.meta.OzaBag;
-import moa.core.Measurement;
-import moa.core.MiscUtils;
-
-import java.util.Arrays;
-
-public class ImprovedOOB extends OzaBag {
+public class ImprovedOOB extends OOB {
 	
 	private static final long serialVersionUID = 1L;
-	
-	public FloatOption theta = new FloatOption("theta", 't',
-            "The time decay factor for class size.", 0.9, 0, 1);
-	
-	protected double[] classSize; // time-decayed size of each class
 
-    @Override
+	@Override
     public String getPurposeString() {
         return "Oversampling on-line bagging of Wang et al IJCAI 2016.";
     }
-	
+
+
 	public ImprovedOOB() {
 		super();
-		classSize = null;
 	}
-	
+
 	@Override
-    public void trainOnInstanceImpl(Instance inst) {
-		
-		updateClassSize(inst);
-		double lambda = calculatePoissonLambda(inst);
-
-		for (moa.classifiers.Classifier classifier : this.ensemble) {
-			int k = MiscUtils.poisson(lambda, this.classifierRandom);
-			if (k > 0) {
-				Instance weightedInst = inst.copy();
-				weightedInst.setWeight(inst.weight() * k);
-				classifier.trainOnInstance(weightedInst);
-			}
-		}
-    }
-	
-	protected void updateClassSize(Instance inst) {
-		if (this.classSize == null) {
-			classSize = new double[inst.numClasses()];
-
-			// <---le19/01/18 modification to start class size as equal for all classes
-			Arrays.fill(classSize, 1d / classSize.length);
-		}
-		
-		for (int i=0; i<classSize.length; ++i) {
-			classSize[i] = theta.getValue() * classSize[i] + (1d - theta.getValue()) * ((int) inst.classValue() == i ? 1d:0d);
-		}
-	}
-	
-	// classInstance is the class corresponding to the instance for which we want to calculate lambda
-	// will result in an error if classSize is not initialised yet
-	public double calculatePoissonLambda(Instance inst) {
+	protected double calculatePoissonLambda(Instance inst) {
 		int majClass = getMajorityClass();
-		
 		return classSize[majClass] / classSize[(int) inst.classValue()];
-		
 
 	}
 
-	// will result in an error if classSize is not initialised yet
-	public int getMajorityClass() {
+	// find the index of the class with the bigger size
+	protected int getMajorityClass() {
 		int indexMaj = 0;
 
 		for (int i=1; i<classSize.length; ++i) {
@@ -91,36 +46,7 @@ public class ImprovedOOB extends OzaBag {
 		}
 		return indexMaj;
 	}
-	
-	// will result in an error if classSize is not initialised yet
-	public int getMinorityClass() {
-		int indexMin = 0;
 
-		for (int i=1; i<classSize.length; ++i) {
-			if (classSize[i] <= classSize[indexMin]) {
-				indexMin = i;
-			}
-		}
-		return indexMin;
-	}
-	
-	// will result in an error if classSize is not initialised yet
-	@Override
-    protected Measurement[] getModelMeasurementsImpl() {
-		Measurement [] measure = super.getModelMeasurementsImpl();
-		Measurement [] measurePlus = null;
-		
-		if (classSize != null) {
-			measurePlus = new Measurement[measure.length + classSize.length];
-			System.arraycopy(measure, 0, measurePlus, 0, measure.length);
 
-			for (int i=0; i<classSize.length; ++i) {
-				String str = "size of class " + i;
-				measurePlus[measure.length+i] = new Measurement(str,classSize[i]);
-			}
-		} else
-			measurePlus = measure;
-		
-		return measurePlus;
-    }
+
 }

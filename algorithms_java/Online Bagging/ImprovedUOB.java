@@ -23,9 +23,7 @@ public class ImprovedUOB extends ImprovedOOB {
 	public ImprovedUOB() {
 		super();
 	}
-	
-	// classInstance is the class corresponding to the instance for which we want to calculate lambda
-	// will result in an error if classSize is not initialised yet
+
 	@Override
 	public double calculatePoissonLambda(Instance inst) {
 		int minClass = getMinorityClass();
@@ -33,4 +31,17 @@ public class ImprovedUOB extends ImprovedOOB {
 		return classSize[minClass] / classSize[(int) inst.classValue()];
 		
 	}
+
+	// find the index of the class with the smaller size
+	protected int getMinorityClass() {
+		int indexMin = 0;
+
+		for (int i=1; i<classSize.length; ++i) {
+			if (classSize[i] <= classSize[indexMin]) {
+				indexMin = i;
+			}
+		}
+		return indexMin;
+	}
+
 }
