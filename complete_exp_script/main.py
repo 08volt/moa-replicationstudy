@@ -1,8 +1,6 @@
 import csv
 import os
 import subprocess
-import sys, getopt
-import random
 
 from Config import *
 
@@ -29,6 +27,11 @@ def createDir():
             subprocess.run(["mkdir", f"results/{d}/{str(o)}"])
             for alg in algorithms:
                 subprocess.run(["mkdir", f"results/{d}/{str(o)}/{alg}"])
+    if Real:
+        for r in reals:
+            subprocess.run(["mkdir", f"results/{r}"])
+            for alg in algorithms:
+                subprocess.run(["mkdir", f"results/{r}/{alg}"])
 
 def generateArff():
 
@@ -50,7 +53,7 @@ def generateArff():
     succ_gen = subprocess.call(['sh', './generateStreams.sh'])
     if succ_gen == 0:
         print("|" * 60)
-        print(f"TEST SUCCESSFUL")
+        print(f"ARFF GENERATION SUCCESSFUL")
         print("|" * 60)
 
 def createTest():
@@ -58,9 +61,23 @@ def createTest():
 
     for i in range(n_exp):
         for alg in algorithms:
+
+            l = f'(meta.{alg})'
+            if "ESOS" in alg:
+                l = f'(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))'
+
+            elif "CSMOTE" in alg:
+                l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree -w 100000)'
+
+            elif "Reb" in alg:
+                l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
+
+            elif "Tree" in alg:
+                l = f'(trees.{alg})'
+
             for o in positives:
                 for s in speeds:
-                    test.write(f"echo {i} {alg} {o} {s}\n")
+                    test.write(f"echo '{alg} imb:{o} speed:{s} exp:{i}'\n")
                     for di, d in enumerate(drifts):
 
                         if "sudden" in s:
@@ -68,27 +85,56 @@ def createTest():
                         else:
                             drift = "45000 -j 10000"
 
-                        l = f'(meta.{alg})'
-                        if "ESOS" in alg:
-                            l = f'(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))'
+                        if Docker:
+                            test.write(
+                                f'sudo docker run --rm --name="{d}_{alg}_{s}_{str(o)}_{str(i)}" '
+                                f'-v $(pwd)/results:/results test_moa bash -c '
+                                f'"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask \\"'
+                                f'EvaluatePrequential -l {l} -s '
+                                f'(ArffFileStream -f ./drifts_arff/{d}-{s}-{o}-{i}.arff) -e '
+                                f'(WindowFixedClassificationPerformanceEvaluator -w {drift} -r -f -g) -i -1 -f 5000\\" '
+                                f'1> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}_err.csv 2> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}.csv"\n')
+                        else:
+                            test.write(
+                                f"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask '",
+                                f'EvaluatePrequential -l {l} -s ',
+                                f'(ArffFileStream -f ./drifts_arff/{d}-{s}-{o}-{i-1}.arff) -e ',
+                                f"(WindowFixedClassificationPerformanceEvaluator -w {drift} -r -f -g) -i -1 -f 5000' ",
+                                f"1> results/Drifts/{d}/{str(o)}/{alg}/{s}_{str(i)}_err.csv 2> results/Drifts/{d}/{str(o)}/{alg}/{s}_{str(i)}.csv\n")
+    if Real:
+        for i in range(n_exp):
+            for alg in algorithms:
+                l = f'(meta.{alg})'
+                if "ESOS" in alg:
+                    l = f'(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))'
 
-                        elif "CSMOTE" in alg:
-                            l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree -w 100000)'
+                elif "CSMOTE" in alg:
+                    l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree -w 100000)'
 
-                        elif "Reb" in alg:
-                            l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
+                elif "Reb" in alg:
+                    l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
 
-                        elif "Tree" in alg:
-                            l = f'(trees.{alg})'
+                elif "Tree" in alg:
+                    l = f'(trees.{alg})'
 
+                for r in reals:
+                    test.write(f"echo '{alg} ds:{r} exp:{i}'\n")
+                    if Docker:
                         test.write(
-                            f'sudo docker run --rm --name="{d}_{alg}_{s}_{str(o)}_{str(i)}" '
+                            f'sudo docker run --rm --name="{r}_{alg}_{str(i)}" '
                             f'-v $(pwd)/results:/results test_moa bash -c '
                             f'"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask \\"'
                             f'EvaluatePrequential -l {l} -s '
-                            f'(ArffFileStream -f ./drifts_arff/{d}-{s}-{o}-{i}.arff) -e '
-                            f'(WindowFixedClassificationPerformanceEvaluator -w {drift} -r -f -g) -i -1 -f 5000\\" '
-                            f'1> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}_err.csv 2> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}.csv"\n')
+                            f'(ArffFileStream -f ./real_arff/{r}.arff) -e '
+                            f'(FadingFactorClassificationPerformanceEvaluator -a 0.995 -r -f -g) -i -1 -f 5000\\" '
+                            f'1> ./results/{r}/{alg}/{str(i)}_err.csv 2> ./results/{r}/{alg}/{str(i)}.csv"\n')
+                    else:
+                        test.write(
+                            f"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask '",
+                            f'EvaluatePrequential -l {l} -s ',
+                            f'(ArffFileStream -f ./real_arff/{r}.arff) -e ',
+                            f"(FadingFactorClassificationPerformanceEvaluator -a 0.995 -r -f -g) -i -1 -f 5000' ",
+                            f"1> results/{r}/{alg}/{str(i)}_err.csv 2> results/{r}/{alg}/{str(i)}.csv\n")
     test.close()
 
 def executeTest():
@@ -118,7 +164,7 @@ def summarizeResults():
     main_dir = "./results"
 
     for stat, size in stats.items():
-        csv_file = open(f'stats/{stat}_big.csv', 'w')
+        csv_file = open(f'stats/{stat}.csv', 'w')
         writer = csv.writer(csv_file)
         if len(size) == 1:
             writer.writerow(["drift", "imbalance", "speed", "alg", "exp", "instance", stat])
@@ -176,6 +222,58 @@ def summarizeResults():
                                 writers[stat].writerow(
                                     [d, unbalance, speed, alg, exp, int(float(data_row[1])), float(data_row[pos[0]]),
                                      float(data_row[pos[1]])])
+    if Real:
+        for stat, size in stats.items():
+            csv_file = open(f'stats/{stat}_real.csv', 'w')
+            writer = csv.writer(csv_file)
+            if len(size) == 1:
+                writer.writerow(["dataset", "alg", "exp", "instance", stat])
+            elif len(size) == 2:
+                writer.writerow(["dataset", "alg", "exp", "instance", stat + "_0", stat + "_1"])
+            writers[stat] = writer
+        for r in reals:
+            path = main_dir + "/" + r
+
+            for alg in os.listdir(path):
+                if "DS_Store" in alg:
+                    continue
+                path2 = path + "/" + alg
+
+                # scan experiments:
+                for result in os.listdir(path2):
+                    if "err" not in result or "DS_Store" in result:
+                        continue
+
+                    exp = -1
+
+                    for i in range(n_exp):
+                        if str(i) in result:
+                            exp = i
+                            break
+                    assert exp != -1
+
+                    data = import_csv(path2 + "/" + result)
+                    start = False
+
+                    for data_row in data:
+                        if data_row[1] == "learning evaluation instances":
+                            start = True
+                            continue
+
+                        if not start:
+                            continue
+                        for stat, pos in stats.items():
+                            if data_row[pos[0]] == "?":
+                                data_row[pos[0]] = "0.0"
+                            if len(pos) == 1:
+
+                                writers[stat].writerow(
+                                    [r, alg, exp, int(float(data_row[1])), float(data_row[pos[0]])])
+                            else:
+                                if data_row[pos[1]] == "?":
+                                    data_row[pos[1]] = "0.0"
+                                writers[stat].writerow(
+                                    [r, alg, exp, int(float(data_row[1])), float(data_row[pos[0]]),float(data_row[pos[1]])])
 
 
 
@@ -183,7 +281,8 @@ if __name__ == '__main__':
     createDir()
     generateArff()
     testfile = createTest()
-    buildDocker()
+    if Docker:
+        buildDocker()
     executeTest()
     summarizeResults()
 
