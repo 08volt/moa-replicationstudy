@@ -194,7 +194,7 @@ P(X|y) drifts, also called *Real drifts*, are the ones that makes the decision b
 
 ## P(y) drifts:
 
-The P(y) drifts affect the imbalance ratio. Each of the data streams with this kind of drift have different level of change. In the list below I details the different ratios. I separate the imbalance ratio before and after the drift with \textit{"-"} and the positive and negative class probability with ":", the *"m"* identifies the minority class ratio of the stream and the *"M"* the majority one:
+The P(y) drifts affect the imbalance ratio. Each of the data streams with this kind of drift have different level of change. In the list below I details the different ratios. I separate the imbalance ratio before and after the drift with "-" and the positive and negative class probability with ":", the *"m"* identifies the minority class ratio of the stream and the *"M"* the majority one:
 - SEA P(y): $0.5:0.5 - m:M$
 - SINE P(y): $m:M - M:m$
 - Disappearing minority: $m:M - 0:1$
