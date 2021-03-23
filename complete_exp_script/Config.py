@@ -19,7 +19,7 @@ algorithms = ["HoeffdingAdaptiveTree"]#,"OzaBag","ImprovedOOB","ImprovedUOB","OO
 
 speeds = ["incremental"]#,"sudden", "periodic"]
 
-reals = ["Elec","PAKDD", "KDDCup"]
+reals = ["Elec"]#,"PAKDD", "KDDCup"]
 
 drifts = ["appearing-minority"]#, "disappearing-minority", "jitter", "clusters-movement", "appearing-clusters",
              #"splitting-clusters", "borderline", "shapeshift", "minority-share"]
