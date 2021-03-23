@@ -1,5 +1,5 @@
 
-## Replication study on Streaming Machine Learning algorithms for Class Imbalance and Concept Drift
+## A Comparative Study on Streaming MachineLearning Algorithms for Binary Classificationunder Concept Drift and Class Imbalance
 
 ![](https://camo.githubusercontent.com/1ef7c1925e77c6f8b1c9f5adfdcea37dba30c98478264503067a91076db66144/687474703a2f2f6d6f612e636d732e7761696b61746f2e61632e6e7a2f77702d636f6e74656e742f75706c6f6164732f323031342f31312f4c6f676f4d4f412e6a7067)
 
