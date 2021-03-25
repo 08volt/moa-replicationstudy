@@ -45,8 +45,10 @@ def generateArff():
                     if not os.path.isfile(f'./drifts_arff/{d}-{s}-{o}-{i}.arff'):
                         test.write(f"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask '"
                                    f'WriteStreamToARFFFile -s '
-                                   f'(moa.dabrze.streams.generators.ImbalancedDriftGenerator -d {d}/{s},start=0,end=100000,value-start=0.0,value-end=1.0 -n 2 -m 0.{o} -s 0.5 -b 0.5 -r {seeds[i]}) -f '
-                                   f"./drifts_arff/{d}-{s}-{o}-{i}.arff -m 100000' \n")
+                                   f'(moa.dabrze.streams.generators.ImbalancedDriftGenerator'
+                                   f' -d {d}/{s},rs={drift_time[s][0]},re={drift_time[s][1]},start=0,end={stream_len},value-start=0.0,value-end=1.0'
+                                   f' -n 2 -m 0.{o} -s {safe_ratio} -b {bord_ratio} -o {out_ratio} -p {rare_ratio} -r {seeds[i]}) -f '
+                                   f"./drifts_arff/{d}-{s}-{o}-{i}.arff -m {stream_len}' \n")
 
     test.close()
     subprocess.run(["chmod", "+x", "./generateStreams.sh"])
@@ -80,10 +82,6 @@ def createTest():
                     test.write(f"echo '{alg} imb:{o} speed:{s} exp:{i}'\n")
                     for di, d in enumerate(drifts):
 
-                        if "sudden" in s:
-                            drift = "50000"
-                        else:
-                            drift = "45000 -j 10000"
 
                         if Docker:
                             test.write(
@@ -92,14 +90,14 @@ def createTest():
                                 f'"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask \\"'
                                 f'EvaluatePrequential -l {l} -s '
                                 f'(ArffFileStream -f ./drifts_arff/{d}-{s}-{o}-{i}.arff) -e '
-                                f'(WindowFixedClassificationPerformanceEvaluator -w {drift} -r -f -g) -i -1 -f 5000\\" '
+                                f'(WindowFixedClassificationPerformanceEvaluator -w {weval_artificial[s]} -r -f -g) -i -1 -f 5000\\" '
                                 f'1> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}_err.csv 2> ./results/{d}/{str(o)}/{alg}/{s}_{str(i)}.csv"\n')
                         else:
                             test.write(
                                 f"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask '",
                                 f'EvaluatePrequential -l {l} -s ',
                                 f'(ArffFileStream -f ./drifts_arff/{d}-{s}-{o}-{i-1}.arff) -e ',
-                                f"(WindowFixedClassificationPerformanceEvaluator -w {drift} -r -f -g) -i -1 -f 5000' ",
+                                f"(WindowFixedClassificationPerformanceEvaluator -w {weval_artificial[s]} -r -f -g) -i -1 -f 5000' ",
                                 f"1> results/Drifts/{d}/{str(o)}/{alg}/{s}_{str(i)}_err.csv 2> results/Drifts/{d}/{str(o)}/{alg}/{s}_{str(i)}.csv\n")
     if Real:
         for i in range(n_exp):
@@ -126,14 +124,14 @@ def createTest():
                             f'"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask \\"'
                             f'EvaluatePrequential -l {l} -s '
                             f'(ArffFileStream -f ./real_arff/{r}.arff) -e '
-                            f'(FadingFactorClassificationPerformanceEvaluator -a 0.995 -r -f -g) -i -1 -f 5000\\" '
+                            f'({real_eval}) -i -1 -f 5000\\" '
                             f'1> ./results/{r}/{alg}/{str(i)}_err.csv 2> ./results/{r}/{alg}/{str(i)}.csv"\n')
                     else:
                         test.write(
                             f"java -Xmx14g -Xss50M -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask '",
                             f'EvaluatePrequential -l {l} -s ',
                             f'(ArffFileStream -f ./real_arff/{r}.arff) -e ',
-                            f"(FadingFactorClassificationPerformanceEvaluator -a 0.995 -r -f -g) -i -1 -f 5000' ",
+                            f"({real_eval}) -i -1 -f 5000' ",
                             f"1> results/{r}/{alg}/{str(i)}_err.csv 2> results/{r}/{alg}/{str(i)}.csv\n")
     test.close()
 

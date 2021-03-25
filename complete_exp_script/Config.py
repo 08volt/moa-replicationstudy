@@ -26,6 +26,28 @@ drifts = ["appearing-minority"]#, "disappearing-minority", "jitter", "clusters-m
 
 positives = ["1"]#,"2","3","4"]
 
+real_eval = "FadingFactorClassificationPerformanceEvaluator -a 0.995 -r -f -g"
+
+stream_len = "100000"
+
+drift_time = {
+    "sudden": ["50000","50000"],
+    "periodic": ["45000","55000"],
+    "incremental": ["45000","55000"]
+}
+
+safe_ratio = "0.5"
+bord_ratio = "0.5"
+out_ratio = "0.0"
+rare_ratio = "0.0"
+
+
+weval_artificial = {
+    "sudden" : "50000",
+    "periodic" : "45000 -j 10000",
+    "incremental" : "45000 -j 10000"
+}
+
 stats = {
 
     "Fscore": [9, 10],
@@ -33,3 +55,5 @@ stats = {
     "Gmean": [13],
     "Ktemp": [7]
 }
+
+
