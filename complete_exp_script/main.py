@@ -65,17 +65,9 @@ def createTest():
         for alg in algorithms:
 
             l = f'(meta.{alg})'
-            if "ESOS" in alg:
-                l = f'(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))'
 
-            elif "CSMOTE" in alg:
-                l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree -w 100000)'
-
-            elif "Reb" in alg:
-                l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
-
-            elif "Tree" in alg:
-                l = f'(trees.{alg})'
+            if alg in alg_strings:
+                l = alg_strings[alg]
 
             for o in positives:
                 for s in speeds:
@@ -103,17 +95,9 @@ def createTest():
         for i in range(n_exp):
             for alg in algorithms:
                 l = f'(meta.{alg})'
-                if "ESOS" in alg:
-                    l = f'(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))'
 
-                elif "CSMOTE" in alg:
-                    l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree -w 100000)'
-
-                elif "Reb" in alg:
-                    l = f'(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
-
-                elif "Tree" in alg:
-                    l = f'(trees.{alg})'
+                if alg in alg_strings:
+                    l = alg_strings[alg]
 
                 for r in reals:
                     test.write(f"echo '{alg} ds:{r} exp:{i}'\n")

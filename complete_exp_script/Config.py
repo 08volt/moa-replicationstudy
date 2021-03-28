@@ -17,6 +17,15 @@ seeds = [0,11,13,17,23,30,39,912,1237,7591,12,213]
 
 algorithms = ["HoeffdingAdaptiveTree"]#,"OzaBag","ImprovedOOB","ImprovedUOB","OOB","UOB","WEOB1","WEOB2","RebalanceStream"]
 
+# if not in alg_string meta.{alg} will be used
+alg_strings = {
+    "HoeffdingAdaptiveTree" : '(trees.HoeffdingAdaptiveTree)',
+    "ESOS_ELM" : '(meta.{alg} -c (OS_ELM -b 100 -i 100 -p) -e (WELM -p -i 100))',
+    "CSMOTE" : '(meta.{alg} -l trees.HoeffdingAdaptiveTree)',
+    "RebalanceStream" : '(meta.{alg} -l trees.HoeffdingAdaptiveTree)'
+}
+
+
 speeds = ["incremental"]#,"sudden", "periodic"]
 
 reals = ["Elec"]#,"PAKDD", "KDDCup"]
